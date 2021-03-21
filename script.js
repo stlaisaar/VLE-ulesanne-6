@@ -15,11 +15,17 @@
             let date = new Date();
             let h = date.getHours();
             let m = date.getMinutes();
-            // Kella lahendus
+            // Lisaülesande
             let s = (date.getSeconds() + 1) % 60;
 
-            if (h > 11) {
+            let algne_h = h;
+
+            if (h > 12) {
                 h = h - 12;
+            }
+
+            if (h == 0) {
+                h = 12;
             }
 
             if (h < 10) {
@@ -34,7 +40,12 @@
                 s = "0" + s;
             }
 
-            c.innerHTML = h + ":" + m + ":" + s;
+            if (algne_h < 12) {
+                c.innerHTML = h + ":" + m + ":" + s + " EL";
+            }
+            else {
+                c.innerHTML = h + ":" + m + ":" + s + " PL";
+            }
             
         };
         
